@@ -17,4 +17,15 @@ docker build -t <nome-da-imagem> .
 docker run --name <nome-do-container> -p 8000:8000 <nome-da-imagem>
 ```
 
+## API
+
+A api possui 4 endpoints:
+
+- GET /pedidos: Retorna todos os pedidos em formato JSON
+- GET /pedidos/{id}: Retorna um pedido específico em formato JSON
+- POST /novo: Cria um novo pedido
+- PUT /pedidos/{id}: Atualiza um pedido específico
+- DELETE /pedidos/{id}: Deleta um pedido específico
+
+
 Vídeo de demonstração: https://youtu.be/L-h0XlU_CzU

@@ -32,7 +32,17 @@ def order(db: Session = Depends(get_db)):
     
     return {"pedidos": orders}
 
-@app.post("/pedidos")
+@app.get("/pedidos/{order_id}")
+def order(order_id: int , db: Session = Depends(get_db)):
+    
+    db_order = db.query(models.Order).filter(models.Order.id == order_id).first()
+
+    if db_order is None:
+        return {"message": "Order not found"}
+    
+    return {"pedido": db_order}
+
+@app.post("/novo")
 def create_order(order: OrderCreate, db: Session = Depends(get_db)):
     
     new_order = models.Order(user_name=order.user_name, user_email= order.user_email, description=order.description)
