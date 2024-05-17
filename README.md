@@ -22,10 +22,88 @@ docker run --name <nome-do-container> -p 8000:8000 <nome-da-imagem>
 A api possui 4 endpoints:
 
 - GET /pedidos: Retorna todos os pedidos em formato JSON
+
+Exemplo de retorno:
+```json
+{
+    "pedidos": [
+        {
+            "id": 1,
+            "user_name": "Satoru Gojo",
+            "user_email": "Hollow.Purple@SixEyes.com",
+            "description": "Between Earth and Heaven, I alone am the honored one",
+        },
+    ]
+}
+```
+
 - GET /pedidos/{id}: Retorna um pedido específico em formato JSON
+
+Exemplo de retorno:
+```json
+{
+    "id": 1,
+    "user_name": "Satoru Gojo",
+    "user_email": "Hollow.Purple@SixEyes.com"
+    "description": "Between Earth and Heaven, I alone am the honored one",
+}
+```
+
 - POST /novo: Cria um novo pedido
+
+Exemplo de requisição:
+```json
+{
+	"user_name": "Satoru Gojo",
+	"user_email": "Hollow.Purple@SixEyes.com",
+	"description": "Between Earth and Heaven, I alone am the honored one"
+}
+```
+
+A resposta será o pedido criado, com um id gerado automaticamente.
+```json
+{
+	"message": "Order created successfully",
+	"order": {
+		"user_name": "Satoru Gojo",
+		"user_email": "Hollow.Purple@SixEyes.com",
+		"id": 1,
+		"description": "Between Earth and Heaven, I alone am the honored one"
+	}
+}
+```
+
 - PUT /pedidos/{id}: Atualiza um pedido específico
+
+Exemplo de requisição:
+```json
+{
+	"user_name": "Suguru Getou",
+	"user_email": "Curse.Control@Tatsumaki.com",
+	"description": "Are you the Strongest Because you are Satoru Gojo, or are you Satoru Gojo because you are the strongest?"
+}
+```
+
+A resposta será o pedido atualizado.
+```json
+{
+	"message": "Order 1 updated successfully"
+}
+```
+
 - DELETE /pedidos/{id}: Deleta um pedido específico
 
+A resposta será uma mensagem de sucesso.
+```json
+{
+    "message": "Order 1 deleted successfully"
+}
+```
+
+## Docs
+
+O framework FASTAPI possui uma interface de documentação automática, que pode ser acessada em http://localhost:8000/docs
+
+## Demonstração
 
 Vídeo de demonstração: https://youtu.be/L-h0XlU_CzU
