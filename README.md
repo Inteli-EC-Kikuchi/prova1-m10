@@ -1,7 +1,7 @@
 # prova1-m10
 
-Solução proposta para o exercício prático da prova 1 do módulo 10
-Aluno: Filipi Enzo Siqueira Kikuchi
+Solução proposta para o exercício prático da prova 1 do módulo 10 <br/>
+**Aluno: Filipi Enzo Siqueira Kikuchi**
 
 Para rodar o projeto, basta executar os seguintes comandos:
 
