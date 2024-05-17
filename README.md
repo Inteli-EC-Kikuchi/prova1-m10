@@ -73,6 +73,26 @@ A resposta será o pedido criado, com um id gerado automaticamente.
 }
 ```
 
+Caso algum campo esteja faltando, a resposta será do tipo:
+```json
+{
+	"detail": [
+		{
+			"type": "missing",
+			"loc": [
+				"body",
+				"description"
+			],
+			"msg": "Field required",
+			"input": {
+				"user_name": "Satoru Gojo",
+				"user_email": "Hollow.Purple@SixEyes.com"
+			}
+		}
+	]
+}
+```
+
 - PUT /pedidos/{id}: Atualiza um pedido específico
 
 Exemplo de requisição:
@@ -84,10 +104,17 @@ Exemplo de requisição:
 }
 ```
 
-A resposta será o pedido atualizado.
+A resposta será o pedido atualizado, caso o pedido exista.
 ```json
 {
 	"message": "Order 1 updated successfully"
+}
+```
+
+Caso o pedido não exista, a resposta será:
+```json
+{
+    "message": "Order not found"
 }
 ```
 
@@ -97,6 +124,13 @@ A resposta será uma mensagem de sucesso.
 ```json
 {
     "message": "Order 1 deleted successfully"
+}
+```
+
+Caso o pedido não exista, a resposta será:
+```json
+{
+    "message": "Order not found"
 }
 ```
 

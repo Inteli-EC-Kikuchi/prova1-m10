@@ -57,6 +57,9 @@ def update_order(order_id: int, order_update: OrderCreate, db: Session = Depends
 
     order = db.query(models.Order).filter(models.Order.id == order_id).first()
 
+    if order is None:
+        return {"message": "Order not found"}
+
     order.user_name = order_update.user_name
     order.user_email = order_update.user_email
     order.description = order_update.description
@@ -69,6 +72,9 @@ def update_order(order_id: int, order_update: OrderCreate, db: Session = Depends
 def delete_order(order_id: int, db: Session = Depends(get_db)):
 
     order = db.query(models.Order).filter(models.Order.id == order_id).first()
+
+    if order is None:
+        return {"message": "Order not found"}
 
     db.delete(order)
     db.commit()
